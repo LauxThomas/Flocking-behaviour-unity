@@ -5,14 +5,20 @@ public class Boid : MonoBehaviour
     public Vector3 velocity;
     public GameObject boundaries;
 
-    private float cohesionRadius = 10;
-    private float separationDistance = 7;
+    public static float cohesionRadius = 10;
+    public static float separationDistance = 7;
     private Collider[] boids;
     private Vector3 cohesion;
     private Vector3 separation;
     private int separationCount;
     private Vector3 alignment;
-    private float maxSpeed = 15;
+    public static float maxSpeed = 15;
+
+    public float cohesionRadiusDebug;
+    public float separationDistanceDebug;
+    public float maxSpeedDebug;
+
+    private float timer = 5;
 
     private void Start()
     {
@@ -62,6 +68,7 @@ public class Boid : MonoBehaviour
 
     void Update()
     {
+        updateDebugValues();
         if (Random.Range(0, 5) < 1)
         {
             CalculateVelocity();
@@ -80,9 +87,12 @@ public class Boid : MonoBehaviour
 //        }
         if (velocity.magnitude <= 0.1f && !(GetComponent<MeshRenderer>().material.color == Color.red))
         {
-            GetComponent<MeshRenderer>().material.color = Color.red;
-            velocity += new Vector3(Random.value * maxSpeed, Random.value * maxSpeed, Random.value * maxSpeed);
-            transform.position = Vector3.zero;
+            if (timerUp())
+            {
+                GetComponent<MeshRenderer>().material.color = Color.red;
+                velocity += new Vector3(Random.value * maxSpeed, Random.value * maxSpeed, Random.value * maxSpeed);
+                transform.position = Vector3.zero;
+            }
         }
         else if (!(GetComponent<MeshRenderer>().material.color == Color.black))
         {
@@ -95,5 +105,33 @@ public class Boid : MonoBehaviour
         Debug.DrawRay(transform.position, separation, Color.green);
         Debug.DrawRay(transform.position, cohesion, Color.magenta);
         Debug.DrawRay(transform.position, alignment, Color.blue);
+    }
+
+    private void updateDebugValues()
+    {
+        cohesionRadiusDebug = cohesionRadius;
+        maxSpeedDebug = maxSpeed;
+        separationDistanceDebug = separationDistance;
+    }
+
+    private bool timerUp()
+    {
+        timer -= Time.deltaTime;
+        return timer <= 0;
+    }
+
+    public void setMaxSpeed(float newSpeed)
+    {
+        maxSpeed = newSpeed;
+    }
+
+    public void setSeparationRadius(float newRadius)
+    {
+        separationDistance = newRadius;
+    }
+
+    public void setCohesionRadius(float newRadius)
+    {
+        cohesionRadius = newRadius;
     }
 }
