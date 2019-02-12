@@ -5,7 +5,7 @@ public class HeartOfTheSwarm : MonoBehaviour
  {
      public Transform boidPrefab;
      [UnityEngine.Range(10, 500)] public int swarmCount = 100;
-     [UnityEngine.Range(10, 25)] public int spawnRadius = 25;
+     [UnityEngine.Range(10, 250)] public int spawnRadius = 25;
      public List<Transform> allBoids;
  
      void Start()

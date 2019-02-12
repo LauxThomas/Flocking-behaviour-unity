@@ -1174,7 +1174,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1704599131}
   m_Direction: 0
   m_MinValue: 10
-  m_MaxValue: 500
+  m_MaxValue: 10000
   m_WholeNumbers: 1
   m_Value: 250
   m_OnValueChanged:
@@ -1770,6 +1770,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c59e6513d3183047bbc489234b7ad3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &879423945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879423942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f966e9ff25e4e8a40bf052c6d0c48065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &911316970
